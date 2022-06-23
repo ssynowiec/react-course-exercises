@@ -1,8 +1,6 @@
 import { useInput } from '../hooks/useInput';
 
 export const BasicForm = props => {
-	let formIsValid = false;
-
 	const {
 		value: nameValue,
 		isValid: nameIsValid,
@@ -34,9 +32,9 @@ export const BasicForm = props => {
 		valueChangeHandler: emailChangeHadler,
 		inputBlurHandler: emailBlurHandler,
 		reset: resetEmail,
-	} = useInput(value => validateEmail(value));
+	} = useInput(value => validateEmail);
 
-	formIsValid = nameIsValid && lastNameIsValid && emailIsValid;
+	const formIsValid = nameIsValid && lastNameIsValid && emailIsValid;
 
 	const formSubmitHandler = e => {
 		e.preventDefault();
