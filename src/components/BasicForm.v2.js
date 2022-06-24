@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { InputWithLabel } from './InputWithLabel';
 
 const nameIsValid = value => value.trim() !== '' && value.length >= 3;
@@ -9,17 +10,13 @@ const validateEmail = email => {
 };
 
 export const BasicFormV2 = props => {
-	// const inputChangeHandler = inputIsValid => {
-	// 	third;
-	// };
-
+	const [isFormValid, setIsFormValid] = useState(false);
 	// const formIsValid = nameIsValid && lastNameIsValid && emailIsValid;
 
 	const formSubmitHandler = e => {
 		e.preventDefault();
 
-		console.log('Submitted');
-		// if (!formIsValid) {
+		// if (!isFormValid) {
 		// 	return;
 		// }
 
@@ -37,7 +34,6 @@ export const BasicFormV2 = props => {
 					id='firstName'
 					isValidFunction={nameIsValid}
 					errorText='Please input a valid name'
-					// onChange={inputChangeHandler}
 				/>
 
 				<InputWithLabel
@@ -46,7 +42,6 @@ export const BasicFormV2 = props => {
 					id='lastName'
 					isValidFunction={nameIsValid}
 					errorText='Please Enter a valid last name'
-					// onChange={inputChangeHandler}
 				/>
 			</div>
 
@@ -56,11 +51,10 @@ export const BasicFormV2 = props => {
 				id='email'
 				isValidFunction={validateEmail}
 				errorText='Please Enter a valid email'
-				// onChange={inputChangeHandler}
 			/>
 
 			<div className='form-actions'>
-				{/* <button disabled={!formIsValid}>Submit</button> */}
+				<button disabled={!isFormValid}>Submit</button>
 			</div>
 		</form>
 	);

@@ -1,12 +1,9 @@
 import { useInput } from '../hooks/useInput';
 
-export const InputWithLabel = ({
-	type,
-	label,
-	id,
-	isValidFunction,
-	errorText,
-}) => {
+export const InputWithLabel = (
+	{ type, label, id, isValidFunction, errorText },
+	ref,
+) => {
 	const {
 		value: inputValue,
 		isValid: inputIsValid,
